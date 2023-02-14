@@ -11,13 +11,26 @@
 </head>
 <body>
     {% include 'blog/navbar.html'%}
-
     <section>
         <div class="container">
-            <div class="col-lg-6 text-light">
-                <h1 class="mt-5">프로젝트 기반 <BR> 빅데이터 서비스 솔루션 </h1>
+            <div class="row justify-content-between">
+                <div class="col-lg-6 text-light">
+                    <h1 class="mt-5"> 프로젝트 기반 <BR> 빅데이터 서비스 솔루션 </h1>
+                    <h5>CAKD7는 새로운 미래를 데이터로 만들어 갑니다.</h5>
+                </div>
+                <div class="col-lg-5 mt-5">
+                    <h2 class="text-light">Blog - Recent posts</h2> {% for post in recent_posts %} <div
+                        class="card mt-1">
+                        <div class="card-body">
+                            <h6><a href="{{ post.get_absolute_url }}"
+                                    class="text-decoration-none text-dark">{{ post.title }}</a></h6>
+                            <span class="badge badge-pill badge-light float-right">
+                                <img class="mr-1 rounded-circle" width="20px" src="" alt="">
+                                {{ post.author.username }} &nbsp; &nbsp; {{ post.created_at }} </span>
+                        </div>
+                    </div> {% endfor %}
+                </div>
             </div>
-
         </div>
     </section>
     <div class="fixed-bottom">
