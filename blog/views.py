@@ -104,7 +104,7 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
 
 #slug는 일반적으로 이미 얻은 데이터를 사용하여 유효한 url을 생성하는 방법
 def category_page(request, slug):
-    if slug == 'no category':
+    if slug == 'no_category':
         category = '미분류'
         post_list = Post.objects.filter(category=None)
     else:
