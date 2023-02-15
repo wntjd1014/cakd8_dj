@@ -13,6 +13,7 @@ class PostList(ListView):
     model = Post
     # ordering은 순서이다.
     ordering = '-pk'
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super(PostList, self).get_context_data()
@@ -26,6 +27,7 @@ class PostDetail(DetailView):
         context = super(PostDetail, self).get_context_data()
         context['categories'] = Category.objects.all()
         context['no_category_post_count'] = Post.objects.filter(category=None).count()
+        context['comment_form'] = CommentForm
         return context
 
 class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
